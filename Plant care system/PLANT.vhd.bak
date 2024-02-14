@@ -1,0 +1,85 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY PLANT is
+PORT (
+  start, stop: in std_logic;
+  
+  LED1, LED2: out std_logic;
+  
+  water_pump: out std_logic;
+  
+  motor: out std_logic);
+end PLANT;
+
+ARCHITECTURE arch of PLANT is
+  
+signal stage_counter: integer range 0 to 2;
+signal timer: integer range 0 to 50;
+
+constant IDLE: integer := 0;
+constant Stage1_WATERING: integer := 1;
+constant Stage2_FERTILIZING: integer := 2;
+
+begin
+
+  process(clk)
+  begin
+    if rising_edge(clk) then
+      case stage_counter is
+        when IDLE =>
+          if start = '1' then
+            stage_counter <= Stage1_WATERING;
+          end if;
+        when Stage1_WATERING =>
+          if timer = 0 then
+            stage_counter <= Stage2_FERTILIZING;
+            timer <= 50;
+          else
+            timer <= timer - 1;
+          end if;
+        when Stage2_FERTILIZING =>
+          if stop = '1' then
+            stage_counter <= IDLE;
+          end if;
+      end case;
+    end if;
+  end process;
+
+  process(stage_counter)
+  begin
+    case stage_counter is
+      when Stage1_WATERING =>
+        water_pump <= '1';
+      when others =>
+        water_pump <= '0';
+    end case;
+  end process;
+
+  process(stage_counter)
+  begin
+    case stage_counter is
+      when Stage2_FERTILIZING =>
+        motor <= '1';
+      when others =>
+        motor <= '0';
+    end case;
+  end process;
+
+  process(stage_counter)
+  begin
+    case stage_counter is
+      when Stage1_WATERING =>
+        LED1 <= '1';
+        LED2 <= '0';
+      when Stage2_FERTILIZING =>
+        LED1 <= '0';
+        LED2 <= '1';
+      when others =>
+        LED1 <= '0';
+        LED2 <= '0';
+    end case;
+  end process;
+
+END arch;

@@ -1,0 +1,93 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LED[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[1]",
+					"strict" : false
+				},
+				{
+					"name" : "water_pump",
+					"strict" : false
+				},
+				{
+					"name" : "motor[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SEG2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "start",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "stop",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
